@@ -65,7 +65,7 @@ resource "google_compute_instance" "controller" {
     network_ip = "10.240.0.1${count.index}"
     subnetwork = google_compute_subnetwork.vpc_subnetwork.id
     access_config {
-      nat_ip = google_compute_address.vpc_address.address
+      nat_ip = google_compute_address.vpc_addressi[count.index].address
     }
   }
   service_account {
@@ -92,7 +92,7 @@ resource "google_compute_instance" "worker" {
     network_ip = "10.240.0.2${count.index}"
     subnetwork = google_compute_subnetwork.vpc_subnetwork.id
     access_config {
-      nat_ip = google_compute_address.vpc_address.address
+      nat_ip = google_compute_address.vpc_address[count.index].address
     }
   }
 
