@@ -42,3 +42,8 @@ resource "google_compute_firewall" "vpc_firewall_external" {
   #}
   source_ranges = ["0.0.0.0/0"]
 }
+
+resource "google_compute_address" "vpc_address" {
+  name = "kubernetes-the-hard-way"
+  region = "us-east1"
+}
